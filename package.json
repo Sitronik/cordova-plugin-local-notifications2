@@ -1,5 +1,5 @@
 {
-  "name": "cordova-plugin-local-notification",
+  "name": "cordova-plugin-local-notification2",
   "version": "0.9.0-beta.3",
   "description": "Schedules and queries for local notifications",
   "cordova": {
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/katzer/cordova-plugin-local-notifications.git"
+    "url": "git+https://github.com/sitronik/cordova-plugin-local-notifications2.git"
   },
   "keywords": [
     "appplant",
@@ -46,10 +46,10 @@
       "version": ">=10.0.0"
     }
   ],
-  "author": "Sebastián Katzer",
+  "author": "Sitronik",
   "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/katzer/cordova-plugin-local-notifications/issues"
+    "url": "https://github.com/sitronik/cordova-plugin-local-notifications2/issues"
   },
-  "homepage": "https://github.com/katzer/cordova-plugin-local-notifications#readme"
+  "homepage": "https://github.com/sitronik/cordova-plugin-local-notifications2#readme"
 }
