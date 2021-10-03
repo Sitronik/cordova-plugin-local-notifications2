@@ -46,6 +46,7 @@ import static android.os.Build.VERSION_CODES.O;
 import static androidx.core.app.NotificationManagerCompat.IMPORTANCE_DEFAULT;
 import static de.appplant.cordova.plugin.notification.Notification.PREF_KEY_ID;
 import static de.appplant.cordova.plugin.notification.Notification.Type.TRIGGERED;
+import de.appplant.cordova.plugin.notification.Options;
 
 /**
  * Central way to access all or single local notifications set by specific
@@ -70,7 +71,7 @@ public final class Manager {
      */
     private Manager(Context context) {
         this.context = context;
-        createDefaultChannel();
+        //createDefaultChannel();
     }
 
     /**
@@ -108,21 +109,29 @@ public final class Manager {
      * TODO: temporary
      */
     @SuppressLint("WrongConstant")
-    private void createDefaultChannel() {
-        NotificationManager mgr = getNotMgr();
+    public void createChannel(Options options) {
+            NotificationManager mgr = getNotMgr();
 
-        if (SDK_INT < O)
-            return;
+            if (SDK_INT < O)
+                return;
 
-        NotificationChannel channel = mgr.getNotificationChannel(CHANNEL_ID);
+            NotificationChannel channel = mgr.getNotificationChannel(CHANNEL_ID);
 
-        if (channel != null)
-            return;
+            if (channel != null) {
+                if (options.isWithoutSound()) {
+                    channel.setSound(null, null);
+                }
+                return;
+            }
 
-        channel = new NotificationChannel(
-                CHANNEL_ID, CHANNEL_NAME, IMPORTANCE_DEFAULT);
+            channel = new NotificationChannel(
+                    CHANNEL_ID, CHANNEL_NAME, IMPORTANCE_DEFAULT);
 
-        mgr.createNotificationChannel(channel);
+            if (options.isWithoutSound()) {
+                channel.setSound(null, null);
+            }
+
+            mgr.createNotificationChannel(channel);
     }
 
     /**

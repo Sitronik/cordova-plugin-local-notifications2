@@ -72,6 +72,8 @@ public class TriggerReceiver extends AbstractTriggerReceiver {
             wakeUp(context);
         }
 
+        manager.createChannel(options);
+
         notification.show();
 
         if (!isUpdate && isAppRunning()) {
